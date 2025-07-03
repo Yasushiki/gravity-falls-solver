@@ -7,3 +7,6 @@ const int MAX_LOWER = 122;
 
 const std::string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string REVERSE_ALPHABET = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+
+const std::string ALPHABET_LOWER = "abcdefghijklmnopqrstuvwxyz";
+const std::string REVERSE_ALPHABET_LOWER = "zyxwvutsrqponmlkjihgfedcba";
