@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-int correct_shift(int current, int shift, int min, int max) {
+int real_shift(int current, int shift, int min, int max) {
   if((current + shift) > max) {
     if((current + shift%26 - 26) < min) {
       return shift%26;
@@ -38,13 +38,12 @@ void vigenere_encode(std::string code, std::string key) {
 
     // Uppercase letter
     if(letter >= MIN_UPPER && letter <= MAX_UPPER) {
-      actual_shift = correct_shift(letter, shift, MIN_UPPER, MAX_UPPER);
-      
+      actual_shift = real_shift(letter, shift, MIN_UPPER, MAX_UPPER);
     }
     
     // Lowercase letter
     else if(letter >= MIN_LOWER && letter <= MAX_LOWER) {
-      actual_shift = correct_shift(letter, shift, MIN_LOWER, MAX_LOWER);
+      actual_shift = real_shift(letter, shift, MIN_LOWER, MAX_LOWER);
     }
     
     // Is not a letter
@@ -62,7 +61,6 @@ void vigenere_encode(std::string code, std::string key) {
 
   }
   std::cout << code << "\n";
-
 }
 
 void vigenere_decode(std::string code, std::string key) {
@@ -80,13 +78,12 @@ void vigenere_decode(std::string code, std::string key) {
 
     // Uppercase letter
     if(letter >= MIN_UPPER && letter <= MAX_UPPER) {
-      actual_shift = correct_shift(letter, -shift, MIN_UPPER, MAX_UPPER);
-      
+      actual_shift = real_shift(letter, -shift, MIN_UPPER, MAX_UPPER);
     }
     
     // Lowercase letter
     else if(letter >= MIN_LOWER && letter <= MAX_LOWER) {
-      actual_shift = correct_shift(letter, -shift, MIN_LOWER, MAX_LOWER);
+      actual_shift = real_shift(letter, -shift, MIN_LOWER, MAX_LOWER);
     }
     
     // Is not a letter
@@ -99,11 +96,7 @@ void vigenere_decode(std::string code, std::string key) {
     if(j >= key.length()) {
       j = 0;
     }
-        
     code[i] = (char)(code[i] + (char)(actual_shift)); 
-
   }
   std::cout << code << "\n";
-
-
 }
